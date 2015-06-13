@@ -1,0 +1,23 @@
+{
+  "name": "shawt-server",
+  "version": "1.0.0",
+  "description": "A leveldb backed link shortener",
+  "main": "shawt.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Link",
+    "Shortener",
+    "leveldb",
+    "Server"
+  ],
+  "author": "Louis Capitanchik",
+  "license": "ISC",
+  "dependencies": {
+    "formidable": "^1.0.17",
+    "leveldown": "^1.2.2",
+    "levelup": "^1.2.1",
+    "q": "^1.4.1"
+  }
+}
