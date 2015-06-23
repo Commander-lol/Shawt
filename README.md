@@ -15,5 +15,3 @@ There are two urls exposed by shawt-server:
 
 `POST example.com/api` - Request body must contain a "link" key/value pair, it will be stored in the database and the generated shortcode will be returned
 
-###Example
-The link [https://4l2.eu/FHHFHIDKSNIJK](https://4l2.eu/FHHFHIDKSNIJK) will redirect to the google homepage
