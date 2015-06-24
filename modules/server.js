@@ -83,11 +83,11 @@ var http = require("http"),
                         return core.promise;
                     };
 
-                resx.on("finish", function closeDB(){
-                    if(reqx.db){
-                        reqx.db.close();
-                    }
-                });
+//                resx.on("finish", function closeDB(){
+////                    if(reqx.db){
+////                        reqx.db.close();
+////                    }
+//                });
 
                 that.funcList.reduce(function(chain, fn) {
                     return chain.spread(wrapfunc.bind(fn, fn));

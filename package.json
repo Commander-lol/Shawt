@@ -1,6 +1,6 @@
 {
   "name": "shawt-server",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A leveldb backed link shortener",
   "main": "shawt.js",
   "scripts": {
