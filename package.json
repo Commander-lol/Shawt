@@ -1,0 +1,24 @@
+{
+  "name": "shawt",
+  "version": "1.0.0",
+  "description": "A tiny link shortener backed by a leveldb store",
+  "main": "shawt.js",
+  "scripts": {
+    "start": "NODE_ENV=production node shawt.js"
+  },
+  "keywords": [
+    "Link Shortener",
+    "LevelDB",
+    "Links",
+    "Shawt"
+  ],
+  "author": "Louis Capitanchik",
+  "license": "MIT",
+  "dependencies": {
+    "formidable": "^1.0.17",
+    "hashids": "^1.0.2",
+    "jsonwebtoken": "^5.4.1",
+    "level": "^1.4.0",
+    "q": "^1.4.1"
+  }
+}

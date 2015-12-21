@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>ShawtSVR</title>
+        <link rel="stylesheet" href="/files/normalize.css">
+        <link rel="stylesheet" href="/files/skeleton.css">
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <h1>Shawt Link Shortener</h1>
+            </div>
+            <form name="shrt" id="shrt-form">
+                <label for="url">
+                    URL:
+                </label>
+                <input type="text" id="url" name="url" required>
+                <button type="submit" id="submit">Shorten!</button>
+            </form>
+            <div class="row">
+                <a id="outUrl"></a>
+            </div>
+        </div>
+        <script type="application/javascript">
+            (function() {
+                "use strict";
+                var form = document.getElementById("shrt-form"),
+                    url = document.getElementById("url"),
+                    button = document.getElementById("submit"),
+                    output = document.getElementById("outUrl"),
+                    token = null;
+
+                button.addEventListener("click", function(e) {
+                    e.preventDefault();
+                    var data = new FormData(form),
+                        req = new XMLHttpRequest();
+
+                    if(token != null) {
+                        data.append("token", JSON.stringify(token));
+                    }
+
+                    req.open("POST", "/", true);
+                    req.responseType = "text";
+                    req.addEventListener("load", function(e) {
+                        var data = e.currentTarget.responseText;
+                        output.textContent = window.location.protocol + "//" + window.location.host + "/" + data;
+                    });
+
+                    req.send(data);
+                });
+            }());
+        </script>
+    </body>
+</html>
