@@ -1,6 +1,6 @@
 {
   "name": "shawt",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A tiny link shortener backed by a leveldb store",
   "main": "shawt.js",
   "scripts": {
@@ -12,6 +12,10 @@
     "Links",
     "Shawt"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Commander-lol/Shawt.git"
+  },
   "author": "Louis Capitanchik",
   "license": "MIT",
   "dependencies": {
