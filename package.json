@@ -1,6 +1,6 @@
 {
   "name": "shawt",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A tiny link shortener backed by a leveldb store",
   "main": "shawt.js",
   "scripts": {

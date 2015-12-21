@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Shawt || Link Shortener</title>
+        <link rel="stylesheet" type="text/css" href="/files/normalize.css">
+        <link rel="stylesheet" type="text/css" href="/files/skeleton.css">
+        <style>
+            @import url("//fonts.googleapis.com/css?family=Oxygen|Roboto+Slab:700|Merriweather:300italic");
+
+            body {
+                background-color: #fefbf6;
+                font-family: "Oxygen", sans-serif;
+            }
+            .header {
+                width: 100%;
+                max-width: 100%;
+                background-color: #302c2d;
+                text-align: center;
+            }
+            h1 {
+                font-family: "Roboto Slab", serif;
+                margin: 0;
+                color: #fbbb1c;
+            }
+            .padded .row {
+                margin-top: 1.5em;
+            }
+
+            form > * {
+                display: inline-block;
+                vertical-align: middle;
+            }
+            form label {
+                text-align: right;
+            }
+            form > *:not(:first-child) {
+                margin-left: 1.5em;
+            }
+            .link, .link a {
+                font-size: 2rem;
+                width: 100%;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container header">
+            <div class="row">
+                <h1>Shawt Link Shortener</h1>
+            </div>
+        </div>
+        <div class="container padded">
+            <form class="row" name="shrt" id="shrt-form">
+                <label for="url" class="columns two">
+                    URL :
+                </label>
+                <input type="text" id="url" name="url" class="columns seven" required>
+                <button type="submit" id="submit" class="columns three">Shorten!</button>
+            </form>
+            <div class="row link">
+                <a id="outUrl"></a>
+            </div>
+        </div>
+        <script type="application/javascript">
+            (function() {
+                "use strict";
+                var form = document.getElementById("shrt-form"),
+                    url = document.getElementById("url"),
+                    button = document.getElementById("submit"),
+                    output = document.getElementById("outUrl"),
+                    token = null;
+
+                button.addEventListener("click", function(e) {
+                    e.preventDefault();
+                    var data = new FormData(form),
+                        req = new XMLHttpRequest();
+
+                    if(token != null) {
+                        data.append("token", JSON.stringify(token));
+                    }
+
+                    req.open("POST", "/", true);
+                    req.responseType = "text";
+                    req.addEventListener("load", function(e) {
+                        var data = e.currentTarget.responseText,
+                            link = window.location.protocol + "//" + window.location.host + "/" + data;
+                        output.textContent = link;
+                        output.href = link;
+                    });
+
+                    req.send(data);
+                });
+            }());
+        </script>
+    </body>
+</html>
