@@ -1,123 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang=en>
 <head>
-	<meta charset="UTF-8">
-	<title>Hello</title>
-	<style>
-		body {
-			background-color: ivory;
-		}
-		* {
-			font-family: sans-serif;
-			padding: 0;
-			margin: 0;
-			transition: 0.1s all linear;
-		}
-		header {
-			line-height:3rem;
-			text-align: center;
-			background-color: #302c2d;
-			color: #fbbb1c;
-		}
-		main {
-			padding: 2rem;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			flex-flow: column;
-		}
-		#input {
-			width:50vw;
-			display: flex;
-			justify-content: space-around;
-			align-items: center;
-		}
-		#input > * {
-			padding: 0.5rem;
-			vertical-align: middle;
-		}
-		#url {
-			flex: 1;
-			margin: 0 1rem;
-		}
-		#out {
-			padding:2rem;
-		}
-		button {
-			border: grey 1px solid;
-			background-color: transparent;
-			-webkit-border-radius:4px;
-			-moz-border-radius:4px;
-			border-radius:4px;
-			cursor: pointer;
-		}
-		button:hover {
-			background-color: #302c2d;
-			color: #fbbb1c;
-		}
-		input {
-			padding: 2px;
-			-webkit-border-radius:2px;
-			-moz-border-radius:2px;
-			border-radius:2px;
-			border: 1px rgb(190, 190, 190) solid;
-		}
-		@media (max-width: 550px) {
-			#input {
-				width: 90vw;
-				flex-flow: column nowrap;
-			}
-			input {
-				width: 100%;
-
-			}
-			#url {
-				margin: 1.2rem;
-			}
-		}
-	</style>
+	<meta charset=UTF-8>
+	<title>Shawt || Link Shortener</title>
+	<style>body{background-color:ivory}*{font-family:sans-serif;padding:0;margin:0;transition:.1s all linear}header{line-height:3rem;text-align:center;background-color:#302c2d;color:#fbbb1c}main{padding:2rem;display:flex;justify-content:center;align-items:center;flex-flow:column}a{color:deepskyblue}#input{width:50vw;display:flex;justify-content:space-around;align-items:center}#input>*{padding:.5rem;vertical-align:middle}#url{flex:1;margin:0 1rem}#out{padding:2rem}button{border:grey 1px solid;background-color:transparent;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;cursor:pointer}button:hover{background-color:#302c2d;color:#fbbb1c}input{padding:2px;-webkit-border-radius:2px;-moz-border-radius:2px;border-radius:2px;border:1px #bebebe solid}@media(max-width:550px){#input{width:90vw;flex-flow:column nowrap}input{width:100%}#url{margin:1.2rem}}</style>
 </head>
 <body>
-	<header>
-		<h1>Shawt Link Shortener v2</h1>
-	</header>
-	<main>
-		<form id="input">
-			<label for="url">URL:</label>
-			<input id="url" type="text" placeholder="url" />
-			<button type="submit">Shorten!</button>
-		</form>
-		<div id="out">
-			<a href="#" id="link"></a>
-		</div>
-	</main>
-
-	<script>
-		var url = null
-		function setUrl() {
-			if (url == null) {
-				return
-			}
-			var link = document.getElementById('link')
-			var ref = window.location.origin + "/" + url
-			link.textContent = ref
-			link.setAttribute('href', ref)
-		}
-		document.getElementById('input').addEventListener('submit', function(e) {
-			e.preventDefault()
-			var data = {
-				url: document.getElementById('url').value
-			}
-			var req = new XMLHttpRequest();
-			req.open("PUT", "/", true);
-			req.setRequestHeader('Content-Type', 'application/json')
-			req.responseType = "text";
-			req.addEventListener("load", function(e) {
-				url = e.currentTarget.responseText
-				setUrl()
-			})
-			req.send(JSON.stringify(data));
-		})
-	</script>
+<header>
+	<h1>Shawt Link Shortener v2</h1>
+</header>
+<main>
+	<form id=input>
+		<label for=url>URL:</label>
+		<input id=url type=text placeholder=url />
+		<button type=submit>Shorten!</button>
+	</form>
+	<div id=out>
+		<a href=# id=link></a>
+	</div>
+</main>
+<script>var url=null;function setUrl(){if(url==null){return}var b=document.getElementById("link");var a=window.location.origin+"/"+url;b.textContent=a;b.setAttribute("href",a)}document.getElementById("input").addEventListener("submit",function(c){c.preventDefault();var b={url:document.getElementById("url").value};var a=new XMLHttpRequest();a.open("PUT","/",true);a.setRequestHeader("Content-Type","application/json");a.responseType="text";a.addEventListener("load",function(d){url=d.currentTarget.responseText;setUrl()});a.send(JSON.stringify(b))});</script>
 </body>
 </html>
