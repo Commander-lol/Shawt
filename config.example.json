@@ -1,0 +1,10 @@
+{
+	"port": 9988,
+	"secret": "Example Secret",
+	"salt": "Example Salt",
+	"alphabet": "qwertyuiopasdfghjklzxcvbnm1234567890QWERTYUIOPASDFGHJKLZXCVBNM",
+	"dbpath": "redis-url",
+	"dbpass": "redis-password",
+	"raven": "raven-url",
+	"minSlugLength": 4
+}
