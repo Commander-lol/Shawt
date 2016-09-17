@@ -17,7 +17,7 @@
 		<button type=submit>Shorten!</button>
 	</form>
 	<div id=out>
-		<a href=# id=link></a>
+		<a href=# id=link rel="nofollow noreferrer"></a>
 	</div>
 </main>
 <script>var url=null;function setUrl(){if(url==null){return}var b=document.getElementById("link");var a=window.location.origin+"/"+url;b.textContent=a;b.setAttribute("href",a)}document.getElementById("input").addEventListener("submit",function(c){c.preventDefault();var b={url:document.getElementById("url").value};var a=new XMLHttpRequest();a.open("PUT","/",true);a.setRequestHeader("Content-Type","application/json");a.responseType="text";a.addEventListener("load",function(d){url=d.currentTarget.responseText;setUrl()});a.send(JSON.stringify(b))});</script>
