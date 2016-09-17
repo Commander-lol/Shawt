@@ -18,7 +18,26 @@ With all that in hand, let's get going!
 
 ## Usage
 
-You can create shortened links programmatically
+You can create shortened links programmatically by sending a `PUT` request to the `/` endpoint with the following 
+`JSON` encoded body:
+
+param |  type  | description
+------|--------|-------------
+ url  |`String`| The url to be shortened
+ 
+ The response will be the `plain/text` encoded url slug. With default configuration, it will literally just be
+ the four characters that go on the end of the url. It's up to your client code to format or store that correctly
+ (This allows a smart client to handle any unforseen changes that would affect the domain being used e.g. change
+ to the app's mount path, or even domain changes)
+ 
+ Sending a `GET` request to the `/:slug` endpoint will return one of the following response types:
+ 
+ code | when | description
+ ---|---|---
+ `301`|The `:slug` exists in the db | Contains a `Location` header with the redirect target
+ `400`|The `:slug` contains invalid characters | 
+ `404`|The `:slug` was not found in the database |
+ `500`|Something went wrong with a database call |
 
 ### `config.json`
 
