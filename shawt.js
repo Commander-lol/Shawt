@@ -18,15 +18,15 @@ const app = express()
 let index = 0
 
 process.on('uncaughtException', e => raven.captureException(e))
-
+/*
 app.use((req, res, next) => {
 	if (req.method.toUpperCase() === 'GET' && req.url === '/') {
 		req.url = '/static.d/'
 	}
 	next()
 })
-
-app.use('/static.d/', express.static(__dirname + '/public'))
+*/
+app.use( express.static(__dirname + '/public'))
 
 app.put('/', bodyParser.json(), (req, res) => {
 	const hash = hasher.encode(++index)
